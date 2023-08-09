@@ -1,0 +1,29 @@
+deployAs:
+  - name: variantsFunction
+    applicationType: service
+    endpoint: /
+    scripts:
+      postDeploy: mvn install
+    configuration:
+      securedConfiguration:
+        - key: clientId
+          description: Commercetools Client Id
+        - key: secret
+          description: Commercetools Client secret
+        - key: projectId
+          description: Commercetools Project Id
+        - key: mainProductType
+          description: Your Commercetools Project's main Product Type
+  - name: customObjectsFunction
+    applicationType: service
+    endpoint: /
+    scripts:
+      postDeploy: mvn install
+    configuration:
+      securedConfiguration:
+        - key: clientId
+          description: Commercetools Client Id
+        - key: secret
+          description: Commercetools Client secret
+        - key: projectId
+          description: Commercetools Project Id
