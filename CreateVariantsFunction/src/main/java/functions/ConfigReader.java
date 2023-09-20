@@ -6,6 +6,9 @@ import java.util.Properties;
 
 public class ConfigReader {
     private static final String PROPERTIES_FILE = "config.properties";
+    public static final java.lang.String CLIENT_ID = "clientId";
+    public static final java.lang.String CLIENT_SECRET = "clientSecret";
+    public static final java.lang.String PROJECT_KEY = "projectKey";
 
     private Properties properties;
 
@@ -22,15 +25,27 @@ public class ConfigReader {
     }
 
     public String getClientId() {
-        return properties.getProperty("clientId");
+        String clientId = properties.getProperty(CLIENT_ID);
+        if(!clientId) {
+            clientId = System.getEnv(CLIENT_ID);
+        }
+        return clientId;
     }
 
     public String getSecret() {
-        return properties.getProperty("secret");
+        String clientSecret = properties.getProperty(CLIENT_SECRET);
+        if(!clientSecret) {
+            clientSecret = System.getEnv(CLIENT_SECRET);
+        }
+        return clientSecret;
     }
 
     public String getProjectId() {
-        return properties.getProperty("projectId");
+        String projectKey = properties.getProperty(PROJECT_KEY);
+        if(!projectKey) {
+            projectKey = System.getEnv(PROJECT_KEY);
+        }
+        return projectKey;
     }
 
     public String getMainProductType() {
